@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { Text, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import { ChevronDownIcon, ChevronUpIcon } from 'react-native-heroicons/solid'
 import DishRow from './DishRow'

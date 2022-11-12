@@ -6,6 +6,9 @@ import { useAuthentication } from '../utils/hooks/useAuthentication'
 import { ActivityIndicator } from 'react-native'
 import UserInfoScreen from '../screens/UserInfoScreen/UserInfoScreen'
 import RestaurantScreen from '../screens/RestaurantScreen/RestaurantScreen'
+import BasketScreen from '../screens/BasketScreen/BasketScreen'
+import PreparingOrderScreen from '../screens/PreparingOrderScreen/PreparingOrderScreen'
+import DeliveryScreen from '../screens/DeliveryScreen/DeliveryScreen'
 
 const Stack = createStackNavigator()
 
@@ -20,17 +23,21 @@ const Navigation = () => {
       {
         user ?
           (
-            <Stack.Group 
+            <Stack.Group
               screenOptions={{
                 headerShown: false
               }}
             >
               <Stack.Screen name='Home' component={HomeScreen} />
-              <Stack.Screen name='UserInfo' component={UserInfoScreen} 
-                options={{cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS}}
+              <Stack.Screen name='UserInfo' component={UserInfoScreen}
+                options={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}
               />
-            <Stack.Screen name='Restaurant' component={RestaurantScreen} />
-
+              <Stack.Screen name='Restaurant' component={RestaurantScreen} />
+              <Stack.Screen name='Basket' component={BasketScreen}
+                options={{ cardStyleInterpolator: CardStyleInterpolators.forRevealFromBottomAndroid }}
+              />
+              <Stack.Screen name='PreparingOrder' component={PreparingOrderScreen} options={{ cardStyleInterpolator: CardStyleInterpolators.forRevealFromBottomAndroid }} />
+              <Stack.Screen name='Delivery' component={DeliveryScreen} options={{ cardStyleInterpolator: CardStyleInterpolators.forRevealFromBottomAndroid }} />
             </Stack.Group>
           ) : (
             <Stack.Group

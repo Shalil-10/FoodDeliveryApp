@@ -4,16 +4,21 @@ import { MinusCircleIcon, PlusCircleIcon } from 'react-native-heroicons/solid'
 import { urlFor } from '../../../sanity'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToBasket, removeFromBasket, selectBasketItemsWithId } from '../../features/basketSlice'
+import { useRoute } from '@react-navigation/native'
 
 
 const DishRow = ({ id, name, description, price, image }) => {
     const [isPressed, setIsPressed] = useState(false)
 
+    const dispatch = useDispatch()
     // const basketItems = useSelector((state) => state.basket.basketItems.filter((item) => item.id === id))
     const basketItems = useSelector((state) => selectBasketItemsWithId(state, id))
-    
-    
-    const dispatch = useDispatch()
+   
+    const { params: {
+        id: restaurantId
+    } } = useRoute()
+
+
 
     useEffect(()=>{
         if(basketItems.length !== 0){
@@ -22,9 +27,7 @@ const DishRow = ({ id, name, description, price, image }) => {
     },[])
 
     const addDishToBasket = () =>{
-        // if(restaurantId !==  )
-        // dispatch(addToBasket({ restaurantId, id, name, description, price, image }))
-        dispatch(addToBasket({ id, name, description, price, image }))
+        dispatch(addToBasket({ restaurantId ,id, name, description, price, image }))
     }
 
     return (

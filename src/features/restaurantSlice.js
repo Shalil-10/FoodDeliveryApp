@@ -29,4 +29,4 @@ export const restaurantReducer = restaurantSlice.reducer
 
 export const selectRestaurant = (state) => state.restaurant.restaurant    //1 restaurant -> name of store, 2 restaurant -> name of Object
 
-// export const selectRestaurantId = (state) => state.restaurant.restaurant.id    
+export const selectRestaurantId = (state) => state.restaurant.restaurant.id    
